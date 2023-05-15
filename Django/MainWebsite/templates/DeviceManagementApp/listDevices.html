@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Device Managment</h1>
+
+<ul class="list-group">
+    {% for instance in deviceinstance_list %}
+    <li class="list-group-item">{{instance}}</li>
+    {% endfor %}
+</ul>
+<br>
+<div style="width:800px; margin:0 auto;">
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        {% comment %} <a href=""><button type="button" class="btn btn-danger">Delete</button></a>
+        <a href=""><button type="button" class="btn btn-warning">Edit</button></a>
+        <a href="/DM/addDevice"><button type="button" class="btn btn-success">Add</button></a> {% endcomment %}
+        <button type="button" onclick="location.href='/DM/addDevice'" class="btn btn-danger">Delete</button>
+        <button type="button" onclick="location.href='/DM/addDevice'" class="btn btn-warning">Edit</button>
+        <button type="button" onclick="location.href='/DM/addDevice'" class="btn btn-success">Add</button>
+    </div>
+</div>
+{% endblock content %}
+ 

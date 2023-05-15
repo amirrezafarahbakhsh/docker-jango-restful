@@ -1,0 +1,49 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+
+{% if form.errors %}
+    <h3>Your username or password was incorrect. Please try again.</h3>
+{% endif %} 
+
+{% if next %} 
+    {% if user.is_authenticated %}
+        <h3> You dont have the premission for this page </h3>
+    {% else %}
+        <h3>Please log in to see this page</h3>
+    {% endif %}
+{% endif %}
+
+<form method='post' action="{% url 'login' %}">
+    {% csrf_token %}
+
+    {% comment %} <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label">{{form.username.label_tag}}</label>
+          </div>
+          <div class="col-auto">
+            <input type="text" id="inputPassword6" class="form-control" aria-labelledby="passwordHelpInline">
+          </div>
+        <div class="col-auto">
+          <label for="inputPassword6" class="col-form-label">{{form.password.label_tag}}</label>
+        </div>
+        <div class="col-auto">
+          <input type="password" id="inputPassword6" class="form-control" aria-labelledby="passwordHelpInline">
+        </div>
+        <div class="col-auto">
+          <span id="passwordHelpInline" class="form-text">
+            Must be 8-20 characters long.
+          </span>
+        </div>
+      </div> {% endcomment %}
+
+    {{form.username.label_tag}}
+    {{form.username}}
+    
+    {{form.password.label_tag}}
+    {{form.password}}
+    {% comment %} <input type="submit" value='login'> {% endcomment %}
+    <button type="submit" class="btn btn-outline-dark">Login</button>
+    <input type="hidden" name='next' value="{{next}}">
+    </form> 
+    {% endblock content %}
